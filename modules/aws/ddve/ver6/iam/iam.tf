@@ -40,3 +40,7 @@ resource "aws_iam_instance_profile" "instance_profile_terraform" {
   name = var.instance_profile_name
   role = aws_iam_role.iam_role_terraform.name
 }
+
+output "instance_profile" {
+  value = aws_iam_instance_profile.instance_profile_terraform.name
+}

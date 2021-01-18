@@ -1,7 +1,8 @@
-variable "aws_region" {}
+variable "region" {}
 variable "amount_of_metadisk" {}
-variable "terraform_aws_instance_id" {}
 variable "ebs_volume_metadisk_sizeGB" {}
+variable "ec2_instance_id" {}
+
 #mapping values of the volume. So _NVRAM got mapped to /dev/sdc
 variable "ec2_device_names" {
   default = [
@@ -26,7 +27,7 @@ variable "ec2_device_names" {
 #create the nvram disk first
 resource "aws_ebs_volume" "nvram" {
 
-  availability_zone = l"${var.aws_region}-b"
+  availability_zone = "${var.region}a"
   size              = 10
   type              = "gp2"
   tags = {
@@ -37,12 +38,12 @@ resource "aws_ebs_volume" "nvram" {
 resource "aws_volume_attachment" "attach_nvram" {
   volume_id   = aws_ebs_volume.nvram.id
   device_name = "/dev/sdb"
-  instance_id = var.terraform_aws_instance_id
+  instance_id = var.ec2_instance_id
 }
 # create the metadatadisk - amount definded in terraform.tfvars
 resource "aws_ebs_volume" "ebs_volume" {
   count             = var.amount_of_metadisk
-  availability_zone = "${var.aws_region}-b"
+  availability_zone = "${var.region}a"
   size              = var.ebs_volume_metadisk_sizeGB
   type              = "gp2"
   tags = {
@@ -54,5 +55,5 @@ resource "aws_volume_attachment" "volume_attachement" {
   count       = var.amount_of_metadisk
   volume_id   = aws_ebs_volume.ebs_volume.*.id[count.index]
   device_name = element(var.ec2_device_names, count.index)
-  instance_id = var.terraform_aws_instance_id
+  instance_id = var.ec2_instance_id
 }
