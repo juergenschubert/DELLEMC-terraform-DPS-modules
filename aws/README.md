@@ -2,8 +2,8 @@
 
 here we are discussion to way how to use the modules to deploy in aws with terraform.  
 As of today there are modules for:  
--DDVE
--DD CloudTier 
+-DDVE. 
+-DD CloudTier.  
 
 ## DD CloudTier with terraform
 We are preparing the aws Cloud to be ready to receiver CloudTier data.  
