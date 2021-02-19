@@ -7,3 +7,7 @@ resource "aws_s3_bucket" "ddve6" {
   bucket        = var.s3_bucket_name
   force_destroy = true
 }
+
+output "bucketname" {
+  value = aws_s3_bucket.ddve6.bucket
+}
