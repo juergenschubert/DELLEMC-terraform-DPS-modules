@@ -3,7 +3,7 @@ here we are discussion to way how to use the modules to deploy in aws with terra
 As of today there are modules for:
 -DDVE
 
-What we need to do on aws are differents tasks     
+## What we need to do on aws are differents tasks     
 * create a S3 bucket to store the DDVE data on it  
 * create access to this bucket with  
   * IAM Policy which will contain ddvepolicy.json  
@@ -15,8 +15,9 @@ rename the terraform.tfvars.example into terraform.tfvars and fill up with the n
 
 walk trough the main.tf and change values for your instance.
 
+''''
 terrafrom init  
 terraform plan  
 terraform apply -auto-approve  
-
+'''
 .. and you are done
