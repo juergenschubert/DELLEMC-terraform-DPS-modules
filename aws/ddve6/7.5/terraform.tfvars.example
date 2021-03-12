@@ -1,0 +1,28 @@
+aws_region = "eu-central-1"
+access_key = "<aws-access-key>"
+secret_key = "<aws-secret>"
+# Metadata Disk Size for DDVE
+# here you can sent the size of you ddve you wanna deploy with terraform apply
+#Instance Type# M5.xlarge M5.2xlarge M5.4xlarge M5.8xlarge
+#capacity     #   16          32          96       256
+#meta disk    #    2          4          10        13
+#size of  meta#   1024      1024       1024       2024
+instance_type      = "m4.xlarge"
+amount_of_metadisk = 2
+ebs_volume_size    = 1024
+/**/
+/*
+instance_type      = "M5.2xlarge"
+amount_of_metadisk = 4
+ebs_volume_size    = 1024
+*/
+/*
+instance_type      = "M5.4xlarge"
+amount_of_metadisk = 10
+ebs_volume_size    = 1024
+*/
+/*
+instance_type      = "M5.8xlarge"
+amount_of_metadisk = 13
+ebs_volume_size    = 2048
+*/
