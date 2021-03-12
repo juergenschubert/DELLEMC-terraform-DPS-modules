@@ -1,6 +1,6 @@
 variable "ddve_name" {}
 variable "ami_id" {}
-variable "region" {}
+variable "aws_region" {}
 variable "instance_type" {}
 variable "aws-subnet-id" {}
 variable "key_name" {}
