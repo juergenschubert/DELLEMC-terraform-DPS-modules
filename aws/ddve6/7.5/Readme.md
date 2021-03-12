@@ -15,9 +15,9 @@ rename the terraform.tfvars.example into terraform.tfvars and fill up with the n
 
 walk trough the main.tf and change values for your instance.
 
-''''
-terrafrom init  
-terraform plan  
-terraform apply -auto-approve  
-'''
+
+> terrafrom init  
+> terraform plan  
+> terraform apply -auto-approve   
+
 .. and you are done
