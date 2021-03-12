@@ -4,7 +4,7 @@ resource "google_compute_instance" "default" {
   zone           = var.instance_zone
   can_ip_forward = true
 
-  tags = ["http-server", "https-server", "ssh"]
+  tags = [ "allow-http", "allow-https", "ssh"]
 
   boot_disk {
     initialize_params {
