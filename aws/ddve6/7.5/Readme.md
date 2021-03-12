@@ -20,4 +20,4 @@ walk trough the main.tf and change values for your instance.
 > terraform plan  
 > terraform apply -auto-approve   
 
-.. and you are done
+.. and the ddve is deployed in aws  
