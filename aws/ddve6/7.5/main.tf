@@ -41,7 +41,7 @@ module "aws_instance" {
   source = "git::https://github.com/juergenschubert/DELLEMC-terraform-DPS-modules//modules/aws/ddve/ver6/aws_instance-v2?ref=main"
   ddve_name            = "ddve-terraform"
   ami_id               = "ami-0b29b44df5b9a210b"
-  region               = var.aws_region
+  aws_region               = var.aws_region
   instance_type        = var.instance_type
   aws-subnet-id        = "subnet-024c26c397520c8f2"
   key_name             = "DDVE6-key-pair-js"
