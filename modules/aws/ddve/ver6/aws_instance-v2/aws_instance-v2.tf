@@ -1,5 +1,5 @@
 resource "aws_instance" "terraform_ddve" {
-  ami           = data.aws_ami.ddve6.id
+  ami           = var.ami_id
   instance_type = var.instance_type
   # subnet the instance runs into
   subnet_id = var.aws-subnet-id
