@@ -1,5 +1,5 @@
 resource "aws_instance" "terraform_ddve" {
-  ami           = var.ami_id
+  ami           = data.aws_ami.ddve6.id
   instance_type = var.instance_type
   # subnet the instance runs into
   subnet_id = var.aws-subnet-id
@@ -20,10 +20,10 @@ resource "aws_instance" "terraform_ddve" {
 }
 
 output "public_ipv4" {
-    value = aws_instance.terraform_ddve.public_ip
+  value = aws_instance.terraform_ddve.public_ip
 }
 output "ec2_id" {
-     value = aws_instance.terraform_ddve.id
+  value = aws_instance.terraform_ddve.id
 }
 output "public_v4_ip" {
   value = aws_instance.terraform_ddve.public_ip
