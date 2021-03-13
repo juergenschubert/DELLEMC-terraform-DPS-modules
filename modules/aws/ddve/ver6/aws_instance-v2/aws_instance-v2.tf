@@ -12,7 +12,7 @@ data "aws_ami" "ddve6" {
   }
 }
 resource "aws_instance" "terraform_ddve" {
-  ami           = var.ami_id
+  ami = data.aws_ami.ddve6.id
   instance_type = var.instance_type
   # subnet the instance runs into
   subnet_id = var.aws-subnet-id
