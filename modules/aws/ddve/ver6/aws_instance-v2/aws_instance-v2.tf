@@ -1,4 +1,16 @@
+variable "ami_filtername" {
+  default = "ddve-7.3.0.5-663138-GA-3cc6672f-1de3-47d6-8eb2-31f9ebd815c7-ami-002eeb5ba32bd2e9d.4"
+}
 
+#find the latest DDVE image in your region
+data "aws_ami" "ddve6" {
+  most_recent = true
+  owners      = ["aws-marketplace"]
+  filter {
+    name   = "name"
+    values = [var.ami_filtername]
+  }
+}
 resource "aws_instance" "terraform_ddve" {
   ami           = var.ami_id
   instance_type = var.instance_type
