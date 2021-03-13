@@ -1,3 +1,13 @@
+#find the latest DDVE image in your region
+data "aws_ami" "ddve6" {
+  most_recent = true
+  owners      = ["aws-marketplace"]
+  filter {
+    name   = "name"
+    values = [var.ami_filtername]
+  }
+}
+
 provider "aws" {
   region     = var.aws_region
   access_key = var.access_key
@@ -40,8 +50,8 @@ resource "aws_eip_association" "eip_assoc" {
 module "aws_instance" {
   source = "git::https://github.com/juergenschubert/DELLEMC-terraform-DPS-modules//modules/aws/ddve/ver6/aws_instance-v2?ref=main"
   ddve_name            = "ddve-terraform"
-  ami_id               = "ami-0b29b44df5b9a210b"
-  aws_region               = var.aws_region
+  ami_id               = data.aws_ami.ddve6.id
+  aws_region           = var.aws_region
   instance_type        = var.instance_type
   aws-subnet-id        = "subnet-024c26c397520c8f2"
   key_name             = "DDVE6-key-pair-js"
