@@ -54,7 +54,7 @@ module "aws_instance" {
   aws_region           = var.aws_region
   instance_type        = var.instance_type
   aws-subnet-id        = "subnet-024c26c397520c8f2"
-  key_name             = "DDVE6-key-pair-js"
+  key_name             = var.keypair_name
   iam_instance_profile = module.iam_creation.instance_profile
   security_group_id    = module.ddve_firewall.security_group_id
 }
@@ -87,4 +87,7 @@ output "DDVE_EIO" {
 output "DDVE_DNS" {
   value = module.aws_instance.public_dns_name
   description = "public DNS name"
+}
+output "aws_key_pair" {
+  value = var.keypair_name
 }

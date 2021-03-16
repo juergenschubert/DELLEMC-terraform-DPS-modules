@@ -1,6 +1,8 @@
 aws_region = "eu-central-1"
 access_key = "<aws-access-key>"
 secret_key = "<aws-secret>"
+# aws keypair for ec2 deployment
+keypair_name "DDVE6-key-pair-js"
 #decide which ddve version you wanna use
 # ddve-7.3.0.5-663138-GA-3cc6672f-1de3-47d6-8eb2-31f9ebd815c7
 # ddve-7.4.0.5-671629-GA-3cc6672f-1de3-47d6-8eb2-31f9ebd815c7

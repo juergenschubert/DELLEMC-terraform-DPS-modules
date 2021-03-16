@@ -5,3 +5,4 @@ variable "instance_type" {}
 variable "ebs_volume_size" {}
 variable "amount_of_metadisk" {}
 variable "ami_filtername" {}
+variable "keypair_name" {}

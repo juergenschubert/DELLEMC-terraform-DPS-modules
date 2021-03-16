@@ -8,6 +8,10 @@ locals {
     description = "Port for https"
     },
     {
+      port        = 3009
+      description = "Port for RestAPIs"
+    },
+    {
       port        = 80
       description = "Port for http"
     },
