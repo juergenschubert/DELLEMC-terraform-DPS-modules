@@ -24,6 +24,14 @@ locals {
       description = "Port for DD Boost and replication"
     },
     {
+      port        = 2052
+      description = "Port for CSM"
+    },
+    {
+      port        = 111
+      description = "Port for CSM"
+    }
+    {
       port        = 2051
       description = "Port for DD Boost and replication"
     }
