@@ -7,6 +7,13 @@ data "aws_ami" "ddve6" {
     values = [var.ami_filtername]
   }
 }
+resource "random_id" "ddve" {
+  keepers = {
+    # Generate a new id each time we switch to a new AMI id
+    ami_id = data.aws_ami.ddve6.id
+  }
+  byte_length = 8
+}
 
 provider "aws" {
   region     = var.aws_region
@@ -17,28 +24,28 @@ provider "aws" {
 #create the needed permissions for usage of S3 with a iam role and policy
 module "iam_creation" {
   source = "git::https://github.com/juergenschubert/DELLEMC-terraform-DPS-modules//modules/aws/ddve/ver6/iam?ref=main"
-  iam_role_name         = "iam_role_ddve6_terraform"
-  iam_policy_name       = "s3_ddve_iam_policy_ddve6_terraform"
-  instance_profile_name = "instance_profile_terraform"
+  iam_role_name         = "iam_role_ddve6_${random_id.ddve.dec}"
+  iam_policy_name       = "s3_ddve_iam_policy_ddve6_${random_id.ddve.dec}"
+  instance_profile_name = "instance_profile_${random_id.ddve.dec}"
 }
 #create the s3-buckt for storing data from the ddve
 #when changing s3_bucktename make sure to also change within the ddvepolicy.json
 module "s3_bucket" {
   source = "git::https://github.com/juergenschubert/DELLEMC-terraform-DPS-modules//modules/aws/ddve/ver6/s3_bucket?ref=main"
-  s3_bucket_name = "ddve6-bucket-terraform"
+  s3_bucket_name = "ddve6-bucket-${random_id.ddve.dec}"
 }
 
 #create the needed security group... firewall
 module "ddve_firewall" {
   source = "git::https://github.com/juergenschubert/DELLEMC-terraform-DPS-modules//modules/aws/ddve/ver6/security_group?ref=main"
-  security_group_name = "ddve6_sg_terraform-js"
+  security_group_name = "ddve6_sg_${random_id.ddve.dec}"
 }
 #here we create a Elastic IP resource
 resource "aws_eip" "lb" {
   instance = module.aws_instance.ec2_id
   vpc      = true
   tags = {
-    Name = "ddve_eip"
+    Name = "ddve_eip_${random_id.ddve.dec}"
   }
 }
 resource "aws_eip_association" "eip_assoc" {
@@ -49,7 +56,7 @@ resource "aws_eip_association" "eip_assoc" {
 #create the ddve ec2 instance
 module "aws_instance" {
   source = "git::https://github.com/juergenschubert/DELLEMC-terraform-DPS-modules//modules/aws/ddve/ver6/aws_instance-v2?ref=main"
-  ddve_name            = "ddve-terraform"
+  ddve_name            = "ddve_${random_id.ddve.dec}"
   ami_id               = data.aws_ami.ddve6.id
   aws_region           = var.aws_region
   instance_type        = var.instance_type
