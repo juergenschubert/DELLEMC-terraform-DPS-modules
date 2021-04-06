@@ -4,7 +4,7 @@ resource "aws_instance" "terraform_ddve" {
   # subnet the instance runs into
   subnet_id = var.aws-subnet-id
   # key name
-  key_name = var.key_name
+  key_name = var.keypair_name
 
   # Security group assign to instance
   vpc_security_group_ids = [var.security_group_id]
