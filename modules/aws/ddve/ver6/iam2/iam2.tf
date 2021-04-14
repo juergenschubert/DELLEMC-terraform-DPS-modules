@@ -1,31 +1,31 @@
 data "aws_iam_policy_document" "ddvepolicy" {
-   "Version": "2012-10-17",
-   "Statement": [
+   Version: 2012-10-17,
+   Statement: [
           {
-          "Effect": "Allow",
-          "Action": [
-                "s3:ListBucket",
-                "s3:GetObject",
-                "s3:PutObject",
-                "s3:DeleteObject"
+          Effect: Allow,
+          Action: [
+                s3:ListBucket,
+                s3:GetObject,
+                s3:PutObject,
+                s3:DeleteObject
                 ],
-          "Resource": [
-                "arn:aws:s3:::ddve6-bucket-terraform",
-                "arn:aws:s3:::ddve6-bucket-terraform/*"
+          Resource: [
+                arn:aws:s3:::ddve6-bucket-terraform,
+                arn:aws:s3:::ddve6-bucket-terraform/*
                 ]
           }
    ]
 }
 
 data "aws_iam_policy_document" "ddverolepolicy" {
-	"Version": "2012-10-17",
-	"Statement": [{
-		"Action": "sts:AssumeRole",
-		"Principal": {
-			"Service": "ec2.amazonaws.com"
+	Version: 2012-10-17,
+	Statement: [{
+		Action: sts:AssumeRole,
+		Principal: {
+			Service: ec2.amazonaws.com
 		},
-		"Effect": "Allow",
-		"Sid": ""
+		Effect: Allow,
+		Sid: 
 	}]
 }
 ##
