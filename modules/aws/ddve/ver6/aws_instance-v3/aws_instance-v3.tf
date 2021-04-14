@@ -1,6 +1,15 @@
 
+data "aws_ami" "ddve6" {
+  most_recent = true
+  owners      = ["aws-marketplace"]
+  filter {
+    name   = "name"
+    values = [var.ami_filtername]
+  }
+}
+
 resource "aws_instance" "terraform_ddve" {
-  ami           = var.ami_id
+  ami = data.aws_ami.ddve6.id
   instance_type = var.instance_type
   # subnet the instance runs into
   subnet_id = var.aws-subnet-id
