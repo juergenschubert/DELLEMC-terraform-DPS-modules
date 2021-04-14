@@ -4,7 +4,7 @@ data "aws_ami" "ddve6" {
   owners      = ["aws-marketplace"]
   filter {
     name   = "name"
-    values = [var.ami_filter_name]
+    values = [var.ami_filtername]
   }
 }
 
