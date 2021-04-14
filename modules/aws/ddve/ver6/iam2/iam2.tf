@@ -28,22 +28,22 @@ resource "aws_iam_policy" "iam_policy_terraform" {
   path        = "/"
   description = "Policy for s3 Storage acccess of our DELL DDVE"
   policy      = <<EOF
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      "Effect": "Allow",
-      "Action": [
-        "s3:ListBucket",
-        "s3:PutObject",
-        "s3:DeleteObject"
-      ],
-      "Resource": [
-        "arn:aws:s3:::ddve6-bucket-terraform",
-        "arn:aws:s3:::ddve6-bucket-terraform/*"
-      ]
-    }
-   ]
-  }
+{
+   "Version": "2012-10-17",
+   "Statement": [
+     "Effect": "Allow",
+     "Action": [
+       "s3:ListBucket",
+       "s3:PutObject",
+       "s3:DeleteObject"
+     ],
+     "Resource": [
+       "arn:aws:s3:::ddve6-bucket-terraform",
+       "arn:aws:s3:::ddve6-bucket-terraform/*"
+     ]
+   }
+  ]
+}
 EOF
 }
 
