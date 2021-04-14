@@ -5,18 +5,18 @@ resource "aws_iam_role" "iam_role_terraform" {
   name               = var.iam_role_name
   assume_role_policy =  <<EOF
   {
- "Version": "2012-10-17",
- "Statement": [
-   {
-     "Action": "sts:AssumeRole",
-     "Principal": {
-       "Service": "ec2.amazonaws.com"
-     },
-     "Effect": "Allow",
-     "Sid": ""
-   }
- ]
-}
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Action": "sts:AssumeRole",
+         "Principal": {
+           "Service": "ec2.amazonaws.com"
+         },
+         "Effect": "Allow",
+         "Sid": ""
+       }
+     ]
+  }
 EOF
 }
 
@@ -28,24 +28,24 @@ resource "aws_iam_policy" "iam_policy_terraform" {
   path        = "/"
   description = "Policy for s3 Storage acccess of our DELL DDVE"
   policy      = <<EOF
-{
-   "Version": "2012-10-17",
-   "Statement": [
-          {
-          "Effect": "Allow",
-          "Action": [
-                "s3:ListBucket",
-                "s3:GetObject",
-                "s3:PutObject",
-                "s3:DeleteObject"
-                ],
-          "Resource": [
-                "arn:aws:s3:::${var.aws_s3_bucket_name}",
-                "arn:aws:s3:::${var.aws_s3_bucket_name}/*"
-                ]
-          }
-   ]
-}
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+           {
+           "Effect": "Allow",
+           "Action": [
+                 "s3:ListBucket",
+                 "s3:GetObject",
+                 "s3:PutObject",
+                 "s3:DeleteObject"
+                 ],
+           "Resource": [
+                 "arn:aws:s3:::${var.aws_s3_bucket_name}",
+                 "arn:aws:s3:::${var.aws_s3_bucket_name}/*"
+                 ]
+           }
+    ]
+  }
 EOF
 }
 
