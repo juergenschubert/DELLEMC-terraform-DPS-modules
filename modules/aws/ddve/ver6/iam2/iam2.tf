@@ -3,7 +3,7 @@
 ##
 resource "aws_iam_role" "iam_role_terraform" {
   name               = var.iam_role_name
-  assume_role_policy =  <<EOF
+  assume_role_policy = <<EOF
   {
      "Version": "2012-10-17",
      "Statement": [
@@ -30,21 +30,19 @@ resource "aws_iam_policy" "iam_policy_terraform" {
   policy      = <<EOF
   {
     "Version": "2012-10-17",
-	  "Statement": [
-        {
-        "Effect": "Allow",
-        "Action": [
-            "s3:ListBucket",
-            "s3:GetObject",
-            "s3:PutObject",
-            "s3:DeleteObject"
-            ],
-        "Resource": [
-            "arn:aws:s3:::ddve6-bucket-terraform",
-            "arn:aws:s3:::ddve6-bucket-terraform/*"
-            ]
-        }
-    ]
+    "Statement": [
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::ddve6-bucket-terraform",
+        "arn:aws:s3:::ddve6-bucket-terraform/*"
+      ]
+    }
+   ]
   }
 EOF
 }
