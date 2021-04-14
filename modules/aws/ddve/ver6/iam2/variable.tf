@@ -7,5 +7,5 @@ variable "iam_policy_name" {
 variable "instance_profile_name" {
   default = "instance_profile_terraform"
 }
-variable "bucket_name" {}
+variable "aws_s3_bucket_name" {}
 
