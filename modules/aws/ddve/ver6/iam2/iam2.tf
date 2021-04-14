@@ -11,11 +11,11 @@ resource "aws_iam_role" "iam_role_terraform" {
          "Action": "sts:AssumeRole",
          "Principal": {
            "Service": "ec2.amazonaws.com"
-         },
-         "Effect": "Allow",
-         "Sid": ""
-       }
-     ]
+           },
+           "Effect": "Allow",
+           "Sid": ""
+        }
+    ]
   }
 EOF
 }
@@ -30,21 +30,20 @@ resource "aws_iam_policy" "iam_policy_terraform" {
   policy      = <<EOF
   {
     "Version": "2012-10-17",
-    "Statement": [
-           {
-           "Effect": "Allow",
-           "Action": [
-                 "s3:ListBucket",
-                 "s3:GetObject",
-                 "s3:PutObject",
-                 "s3:DeleteObject"
-                 ],
-           "Resource": [
-                 "arn:aws:s3:::${var.aws_s3_bucket_name}",
-                 "arn:aws:s3:::${var.aws_s3_bucket_name}/*"
-                 ]
-           }
-    ]
+	  "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:ListBucket",
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:DeleteObject"
+          ],
+          "Resource": [
+            "arn:aws:s3:::${var.aws_s3_bucket_name}",
+            "arn:aws:s3:::${var.aws_s3_bucket_name}/*"
+            ]
+            }]
   }
 EOF
 }
