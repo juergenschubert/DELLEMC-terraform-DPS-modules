@@ -26,8 +26,8 @@ resource "aws_iam_policy" "iam_policy_terraform" {
                 "s3:DeleteObject"
                 ],
           "Resource": [
-                "arn:aws:s3:::$${aws_s3_bucket_name}",
-                "arn:aws:s3:::$${aws_s3_bucket_name}/*"
+                "arn:aws:s3:::${aws_s3_bucket_name}",
+                "arn:aws:s3:::${aws_s3_bucket_name}/*"
                 ]
           }
    ]
